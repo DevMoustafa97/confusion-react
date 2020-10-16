@@ -56,7 +56,7 @@ export default class Header extends Component {
               <Nav className="ml-auto" navbar>
                 <NavItem>
                   <Button outline onClick = {this.toggleModal}>
-                    <span className="fa fa-sign-in"></span>Login
+                    <span className="fa fa-user mr-1"></span>Login
                   </Button>
                 </NavItem>
               </Nav>
