@@ -46,11 +46,7 @@ class Main extends Component {
     };
 
 
-    const AboutWithDetails = ()=>{
-      return(
-        <About leaders = {this.props.leaders} />
-      )
-    } 
+     
     return (
       <div>
         <Header />
