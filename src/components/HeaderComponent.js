@@ -78,7 +78,6 @@ export default class Header extends Component {
               Login
           </ModalHeader>
           <ModalBody>
-            
           <Form onSubmit={this.handleLogin}>
             <FormGroup>
                 <Label htmlFor="username">Username</Label>

@@ -162,7 +162,7 @@ class Contact extends Component {
                                 <Col md={10}>
                                     <Control.textarea model=".message" id="message" name="message"
                                         rows="12"
-                                        className="form-control" />
+                                        className="form-control"  />
                                 </Col>
                             </Row>
                             <Row className="form-group">
