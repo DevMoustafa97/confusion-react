@@ -31,6 +31,11 @@ constructor(props){
         isCommentModalOpen:!this.state.isCommentModalOpen
       })
     }
+    const handleSubmit = (values)=>{
+      console.log(values)
+      toggleModal()
+      this.props.addComment(this.props.dishId, values.rating, values.name, values.commentMessage)
+    }
     return (
     <div>
       <h3>Comments</h3>
@@ -43,7 +48,7 @@ constructor(props){
               Submit Comment
           </ModalHeader>
           <ModalBody>
-            <LocalForm className = "m-2">
+            <LocalForm className = "m-2" onSubmit = {handleSubmit}>
             <Row className="mb-2">              
               <Label htmlFor="rating">Rating</Label>
               <Control.select model=".rating" name="contactType" className="form-control">
@@ -70,7 +75,7 @@ constructor(props){
             </Row>
 
             <Row className="mb-2">
-              <Label htmlFor="yourName">Comment</Label>
+              <Label htmlFor="commentMessage">Comment</Label>
             <Control.textarea model=".commentMessage" id="commentMessage" name="commentMessage"
               rows="6"
               className="form-control" />
@@ -128,7 +133,7 @@ constructor(props){
               <RenderDish dish={props.dish} />
           </div>
           <div className="col-12 col-md-5 m-1">
-              <RenderComments comments={props.comments} />
+              <RenderComments comments={props.comments} addComment = {props.addComment} dishId = {props.dish.id}/>
           </div>
       </div>
       </div>
