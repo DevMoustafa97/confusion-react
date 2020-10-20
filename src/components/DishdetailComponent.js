@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {Card, CardImg, CardText, CardBody, CardTitle, Breadcrumb,BreadcrumbItem,Button,Row,Label,Modal,ModalHeader,ModalBody} from 'reactstrap'
 import {Link} from 'react-router-dom'
 import { Control,LocalForm,Errors } from 'react-redux-form'
+import { baseUrl } from "../shared/baseURI";
 import {Loading} from './LoadingComponent';
 class RenderComments extends Component {  
 constructor(props){
@@ -100,7 +101,7 @@ constructor(props){
       if(dish){
         return(
           <Card>
-              <CardImg widht = '100%' src = {dish.image} alt={dish.name}></CardImg>
+              <CardImg widht = '100%' src = {baseUrl + dish.image} alt={dish.name}></CardImg>
             <CardBody>
               <CardTitle>{dish.name}</CardTitle>
               <CardText>{dish.description}</CardText>
