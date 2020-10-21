@@ -35,7 +35,7 @@ constructor(props){
     const handleSubmit = (values)=>{
       console.log(values)
       toggleModal()
-      this.props.addComment(this.props.dishId, values.rating, values.name, values.commentMessage)
+      this.props.postComment(this.props.dishId, values.rating, values.name, values.commentMessage)
     }
     return (
     <div>
@@ -151,7 +151,7 @@ constructor(props){
               <RenderDish dish={props.dish} />
           </div>
           <div className="col-12 col-md-5 m-1">
-              <RenderComments comments={props.comments} addComment = {props.addComment} dishId = {props.dish.id}/>
+              <RenderComments comments={props.comments} postComment = {props.postComment} dishId = {props.dish.id}/>
           </div>
       </div>
       </div>
