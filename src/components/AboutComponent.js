@@ -1,14 +1,16 @@
 import React from 'react';
 import { Breadcrumb, BreadcrumbItem, Card, CardBody, CardHeader, Media } from 'reactstrap';
 import { Link } from 'react-router-dom';
-
+import {baseUrl} from '../shared/baseURI'
+import {Loading} from './LoadingComponent';
+import {FadeTransform, Fade, Stagger} from 'react-animation-components'
 function About(props) {
-    
+    console.log(props.leaders.isLoading)
   const RenderLeader = ({leader})=>{
       return (
         <Media key={leader.id} className="row container mt-5">
           <Media left href="#" className="col-md-3">
-            <img src={leader.image} alt={leader.name} />
+            <img src={ baseUrl + leader.image} alt={leader.name} />
           </Media>
           <Media body>
             <Media heading>
@@ -21,10 +23,11 @@ function About(props) {
       )
     }
 
-    const leaders = props.leaders.map((leader) => {
-      console.log(leader)
+    const leaders = props.leaders.leaders.map((leader) => {
         return (
-          <RenderLeader leader={leader}/>
+        <Fade in>
+          <RenderLeader leader={leader} key = {leader.id}/>
+        </Fade>
         );
     });
 
@@ -84,7 +87,9 @@ function About(props) {
                 </div>
                 <div className="col-12">
                     <Media list>
-                        {leaders}
+                        <Stagger in>
+                            {props.leaders.isLoading?<Loading />:leaders}
+                        </Stagger>
                     </Media>
                 </div>
             </div>

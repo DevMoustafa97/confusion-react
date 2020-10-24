@@ -24,14 +24,14 @@ export default class Header extends Component {
   render() {
     return (
       <React.Fragment>
-        <Navbar dark expand="md">
+        <Navbar dark expand="md" >
           <div className = "container">
             <NavbarToggler onClick={this.toggleNav}></NavbarToggler>
             <NavbarBrand className="mr-auto" href = "/">
               <img src="assets/images/logo.png" height="30" width="41" alt="Restaurante Con Fusion"/>
             </NavbarBrand>
             <Collapse isOpen={this.state.isNavOpen} navbar>
-              <Nav navbar>
+              <Nav navbar >
                 <NavItem>
                   <NavLink className="nav-link" to="/home">
                     <i className="fa fa-home fa-lg"></i> Home

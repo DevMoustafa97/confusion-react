@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom'
 import { Control,LocalForm,Errors } from 'react-redux-form'
 import { baseUrl } from "../shared/baseURI";
 import {Loading} from './LoadingComponent';
+import {FadeTransform, Fade, Stagger} from 'react-animation-components'
 class RenderComments extends Component {  
 constructor(props){
   super(props)
@@ -21,10 +22,12 @@ constructor(props){
     if(this.props.comments){
       comment = this.props.comments.map(comment=>{
         return(
+          <Fade in>
           <div key = {comment.id}>
             <p>{comment.comment}</p>
             <p>-- {comment.author} , {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'long', day: '2-digit'}).format(new Date(Date.parse(comment.date)))}</p>
           </div>
+          </Fade>
       )
     })
    const toggleModal = ()=>{
@@ -100,6 +103,11 @@ constructor(props){
   function RenderDish({dish}){
       if(dish){
         return(
+          <FadeTransform in 
+            transformProps = {{
+              exitTransform:'scale(0.5) translateY(-50%)'
+          }} 
+          >
           <Card>
               <CardImg widht = '100%' src = {baseUrl + dish.image} alt={dish.name}></CardImg>
             <CardBody>
@@ -107,6 +115,7 @@ constructor(props){
               <CardText>{dish.description}</CardText>
             </CardBody>
           </Card>
+        </FadeTransform>
       )
     }else {
       return null
@@ -151,7 +160,9 @@ constructor(props){
               <RenderDish dish={props.dish} />
           </div>
           <div className="col-12 col-md-5 m-1">
+              <Stagger in>
               <RenderComments comments={props.comments} postComment = {props.postComment} dishId = {props.dish.id}/>
+              </Stagger>
           </div>
       </div>
       </div>
